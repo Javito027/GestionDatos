@@ -29,9 +29,8 @@ RM := rm -rf
 -include asw/components/icuasw/src/subdir.mk
 -include asw/components/cctm_channelctrl/src/subdir.mk
 -include asw/components/ccepdmanager/src/subdir.mk
+-include asw/subdir.mk
 -include subdir.mk
--include objects.mk
-
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C++_DEPS)),)
 -include $(C++_DEPS)
@@ -75,7 +74,7 @@ all: main-build
 main-build: asw_pus_1_x_rtems_project_2024_students
 
 # Tool invocations
-asw_pus_1_x_rtems_project_2024_students: $(OBJS) $(USER_OBJS) makefile objects.mk $(OPTIONAL_TOOL_DEPS)
+asw_pus_1_x_rtems_project_2024_students: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: Cross G++ Linker'
 	sparc-rtems-g++ -msoft-float -o "asw_pus_1_x_rtems_project_2024_students" $(OBJS) $(USER_OBJS) $(LIBS)

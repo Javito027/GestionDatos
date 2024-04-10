@@ -31,6 +31,7 @@ asw/dataclasses/CDTCHandler/src \
 asw/dataclasses/CDTMHandler/src \
 asw/dataclasses/CDTMList/src \
 asw/edroom_glue/src \
+asw \
 . \
 llsw/emu_gss/src \
 llsw/emu_hw_timecode_drv/src \
