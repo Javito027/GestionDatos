@@ -149,9 +149,12 @@ void PUSService5::Exec5_5TC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
 	//TODO use GetRIDEnableConfigIndex and GetRIDEnableConfigOffset
 	//for set the bit of the array that enables the RID
+	index = GetRIDEnableConfigIndex(RID);
+	offset = GetRIDEnableConfigOffset(RID);
 
 	if (IsIndexValid(index)) {
-
+		// Set the bit at the offset to 1 (enable the RID)
+		RIDEnableConfig[index] |= (1 << offset);
 
 
 		PUSService1::BuildTM_1_7(tcHandler, tmList);
@@ -173,18 +176,22 @@ void PUSService5::Exec5_6TC(CDTCHandler &tcHandler, CDTMList &tmList) {
 	RID = tcHandler.GetNextUInt16();
 
 	//TODO use GetRIDEnableConfigIndex and GetRIDEnableConfigOffset
+	// Get the index and offset for the RID
+	index = GetRIDEnableConfigIndex(RID);
+	offset = GetRIDEnableConfigOffset(RID);
 
+	if (IsIndexValid(index)) {
+		// Set the bit at the offset to 0 (disable the RID)
+		RIDEnableConfig[index] &= ~(1 << offset);
 
+		PUSService1::BuildTM_1_7(tcHandler, tmList);
 
+	} else {
 
-
-
-
-
-
-
-
+		PUSService1::BuildTM_1_8_TC_5_X_RIDUnknown(tcHandler, tmList, RID);
+	}
 }
+
 
 void PUSService5::ExecTC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
@@ -194,7 +201,11 @@ void PUSService5::ExecTC(CDTCHandler &tcHandler, CDTMList &tmList) {
 
 		Exec5_5TC(tcHandler, tmList);
 		break;
-	//TODO Complete for enable [5,6] Execution
+
+	case (6):
+
+		Exec5_6TC(tcHandler, tmList);
+		break;
 
 
 	default:

@@ -123,3 +123,13 @@ EmuGSS_TCProgram20_3 prog_FT_0070_step_4(FT_0070_TIME_step4,
 
 #endif
 
+#ifdef FT_SOLO_EPD_ICU_Serv5_0080
+
+#define FT_SOLO_EPD_ICU_SERV_5_0080_TIME_step0 (UNITIME_AFTER_POWER_ON + 5)
+#define FT_SOLO_EPD_ICU_SERV_5_0080_TIME_step1 (UNITIME_AFTER_POWER_ON + 8)
+
+EmuGSS_TCProgram5_5 prog_FT_0080_step_0(FT_SOLO_EPD_ICU_Serv5_0080_TIME_step0,
+		"FT_SOLO_EPD_ICU_Serv5_0080 step 0, 
+
+
+#endif
