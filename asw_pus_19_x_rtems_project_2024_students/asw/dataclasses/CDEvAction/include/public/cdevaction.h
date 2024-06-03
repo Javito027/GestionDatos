@@ -5,7 +5,7 @@
 #include "public/cdtchandler.h"
 
 class CDEvAction{
-	
+
 	friend class PUSService19;
 
 	CDTCHandler mTCHandler;
@@ -33,8 +33,8 @@ class CDEvAction{
 	}
 
 	protected:
-	
+
 	private:
-	
+
 };
 #endif
